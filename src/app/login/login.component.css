@@ -1,0 +1,5 @@
+.loginBg{background:url(http://lepoint.mu/wp-content/uploads/2019/01/bank-of-mauritius_edited.jpg) no-repeat center center fixed;width:100%;height:100%;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;position:relative}
+.loginBg .loginBg-overlap{background:rgba(0,0,0,.5);width:100%;height:100%;position:absolute}
+
+.form-element{padding:5px 0 25px 2px;width:100%}
+.button{width:100%}

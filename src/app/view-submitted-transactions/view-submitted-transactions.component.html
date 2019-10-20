@@ -1,0 +1,40 @@
+<div class="my-5">
+    <div class="col-md-6 mx-auto">
+        <h2 class="my-3 text-center" color="primary">View Submitted Transactions</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field class="mb-3">
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 text-lg-right">
+                    <a routerLink="/new-transaction" mat-raised-button color="primary" class="my-3"> <i class="material-icons">
+                            post_add
+                    </i>New Transaction</a>
+            </div>
+        </div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="customername">
+                <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.customername}} </td>
+            </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="transferamount">
+                <th mat-header-cell *matHeaderCellDef> Transfer Amount </th>
+                <td mat-cell *matCellDef="let element"> {{element.transferamount}} </td>
+            </ng-container>
+            <!-- Weight Column -->
+            <ng-container matColumnDef="transfercurrency">
+                <th mat-header-cell *matHeaderCellDef> Transfer Currency </th>
+                <td mat-cell *matCellDef="let element"> {{element.transfercurrency}} </td>
+            </ng-container>
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="reference">
+                <th mat-header-cell *matHeaderCellDef> Reference </th>
+                <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
