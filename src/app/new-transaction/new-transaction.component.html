@@ -10,46 +10,133 @@
                     Submitted Transactions</a>
             </div>
         </div>
-        <form class="form" class="mat-elevation-z8 p-5">
+        <form class="form" class="mat-elevation-z8 p-5" [formGroup]="newTransactionForm" (ngSubmit)="newFinalTransaction()">
             <mat-form-field class="form-element">
-                <input matInput placeholder="Reference">
+                <input matInput placeholder="Reference" formControlName="newtrans_reference">
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_reference').valid && newTransactionForm.get('newtrans_reference').touched">
+                    Enter
+                    Reference
+                </span>
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_reference').valid && newTransactionForm.get('newtrans_reference').touched">Proper
+                    Reference</span>
+                <span class="text-danger"> {{erroruserfield}}</span>
             </mat-form-field>
             <mat-form-field class="form-element">
-                <input matInput placeholder="Customer Number">
+                <input matInput placeholder="Customer Number" formControlName="newtrans_customernumber" (blur)="newTransaction()">
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_customernumber').valid && newTransactionForm.get('newtrans_customernumber').touched">
+                    Enter
+                    Customer Number
+                </span>
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_customernumber').valid && newTransactionForm.get('newtrans_customernumber').touched">Proper
+                    Customer Number</span>
+                <span class="text-danger"> {{erroruserfield}}</span>
+            </mat-form-field>
+            <mat-form-field class="form-element" *ngIf="newtranCusdetails">
+                <input matInput placeholder="Customer Name" formControlName="newtrans_customername"  value="{{data.SHORT_NAME}}" >
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_customername').valid && newTransactionForm.get('newtrans_customername').touched">
+                    Enter
+                    Customer Name
+                </span>
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_customername').valid && newTransactionForm.get('newtrans_customername').touched">Proper
+                    Customer Name</span>
+                <span class="text-danger"> {{erroruserfield}}</span>
+            </mat-form-field>
+            <mat-form-field class="form-element" *ngIf="newtranCusdetails">
+                <input matInput placeholder="Customer Address" formControlName="newtrans_customeraddress" value="{{data.STREET_ADDR}}">
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_customeraddress').valid && newTransactionForm.get('newtrans_customeraddress').touched">
+                    Enter
+                    Customer Address
+                </span>
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_customeraddress').valid && newTransactionForm.get('newtrans_customeraddress').touched">Proper
+                    Customer Address</span>
+                <span class="text-danger"> {{erroruserfield}}</span>
+            </mat-form-field>
+            <mat-form-field class="form-element" *ngIf="newtranCusdetails">
+                <input matInput placeholder="Customer Phone Number" formControlName="newtrans_customerphnumber" value="{{data.CONTACT_INFO_V7.CONTACT_INFO_V7.PHONE_LIST_V7.PHONE_LIST_ITEM_V7.PHONE}}">
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_customerphnumber').valid && newTransactionForm.get('newtrans_customerphnumber').touched">
+                    Enter
+                    Customer Phone Number
+                </span>
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_customerphnumber').valid && newTransactionForm.get('newtrans_customerphnumber').touched">Proper
+                    Customer Phone Number</span>
+                <span class="text-danger"> {{erroruserfield}}</span>
             </mat-form-field>
             <mat-form-field class="form-element">
-                <input matInput placeholder="Customer Name">
+                <input matInput placeholder="Transfer Amount" formControlName="newtrans_transferamount">
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_transferamount').valid && newTransactionForm.get('newtrans_transferamount').touched">
+                    Enter
+                    Transfer Amount
+                </span>
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_transferamount').valid && newTransactionForm.get('newtrans_transferamount').touched">Proper
+                    Transfer Amount
+                </span>
+                <span class="text-danger"> {{erroruserfield}}</span>
+            </mat-form-field>
+            <!-- <mat-form-field class="form-element">
+                    <mat-select placeholder="Transfer Currency">
+                        <mat-option value="AED">AED</mat-option>
+                        <mat-option value="EUR">EUR</mat-option>
+                        <mat-option value="CHF">CHF</mat-option>
+                        <mat-option value="MUR">MUR</mat-option>
+                        <mat-option value="USD">USD</mat-option>
+                    </mat-select>
+                </mat-form-field> -->
+            <mat-form-field class="form-element">
+                <input matInput placeholder="Beneficiary Bank" formControlName="newtrans_beneficiarybank">
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_beneficiarybank').valid && newTransactionForm.get('newtrans_beneficiarybank').touched">
+                    Enter
+                    Beneficiary Bank
+                </span>
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_beneficiarybank').valid && newTransactionForm.get('newtrans_beneficiarybank').touched">Proper
+                    Beneficiary Bank
+                </span>
+                <span class="text-danger"> {{erroruserfield}}</span>
             </mat-form-field>
             <mat-form-field class="form-element">
-                <input matInput placeholder="Customer Address">
+                <input matInput placeholder="Beneficiary  Account Number"
+                    formControlName="newtrans_beneficiaryaccountnumber">
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_beneficiaryaccountnumber').valid && newTransactionForm.get('newtrans_beneficiaryaccountnumber').touched">
+                    Enter
+                    Beneficiary Account Number
+                </span>
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_beneficiaryaccountnumber').valid && newTransactionForm.get('newtrans_beneficiaryaccountnumber').touched">Proper
+                    Beneficiary Account Number
+                </span>
+                <span class="text-danger"> {{erroruserfield}}</span>
             </mat-form-field>
             <mat-form-field class="form-element">
-                <input matInput placeholder="Customer Phone Number">
-            </mat-form-field>
-            <mat-form-field class="form-element">
-                <input matInput placeholder="Transfer Amount">
-            </mat-form-field>
-            <mat-form-field class="form-element">
-                <mat-select placeholder="Transfer Currency">
-                    <mat-option value="AED">AED</mat-option>
-                    <mat-option value="EUR">EUR</mat-option>
-                    <mat-option value="CHF">CHF</mat-option>
-                    <mat-option value="MUR">MUR</mat-option>
-                    <mat-option value="USD">USD</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field class="form-element">
-                <input matInput placeholder="Beneficiary Bank">
-            </mat-form-field>
-            <mat-form-field class="form-element">
-                <input matInput placeholder="Beneficiary  Account Number">
-            </mat-form-field>
-            <mat-form-field class="form-element">
-                <input matInput placeholder="Payment Details">
+                <input matInput placeholder="Payment Details" formControlName="newtrans_payementdetails">
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_payementdetails').valid && newTransactionForm.get('newtrans_payementdetails').touched">
+                    Enter
+                    Payment Details
+                </span>
+                <span
+                    *ngIf="!newTransactionForm.get('newtrans_payementdetails').valid && newTransactionForm.get('newtrans_payementdetails').touched">Proper
+                    Payment Details
+                </span>
+                <span class="text-danger"> {{erroruserfield}}</span>
             </mat-form-field>
             <div class="example-button-row">
-                <button type="reset" routerLink="/new-transaction" mat-raised-button class="grayBtn">Reset</button>
-                <button type="submit" routerLink="/new-transaction" mat-raised-button color="primary">Submit</button>
+                <button type="reset" mat-raised-button class="grayBtn">Reset</button>
+                <button type="submit" mat-raised-button color="primary"
+                    [disabled]="!newTransactionForm.valid">Submit</button>
             </div>
         </form>
     </div>

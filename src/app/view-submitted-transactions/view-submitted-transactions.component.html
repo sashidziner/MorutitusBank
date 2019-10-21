@@ -3,35 +3,39 @@
         <h2 class="my-3 text-center" color="primary">View Submitted Transactions</h2>
         <div class="row">
             <div class="col-md-6">
-                <mat-form-field class="mb-3">
+                <!-- <mat-form-field class="mb-3">
                     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-                </mat-form-field>
+                </mat-form-field> -->
+                <a routerLink="/new-transaction" mat-raised-button color="primary" class="my-3"> <i
+                        class="material-icons">
+                        post_add
+                    </i>New Transaction</a>
             </div>
-            <div class="col-md-6 text-lg-right">
+            <!-- <div class="col-md-6 text-lg-right">
                     <a routerLink="/new-transaction" mat-raised-button color="primary" class="my-3"> <i class="material-icons">
                             post_add
                     </i>New Transaction</a>
-            </div>
+            </div> -->
         </div>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <ng-container matColumnDef="customername">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="apiTable">
+            <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> Customer Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.customername}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
             </ng-container>
             <!-- Name Column -->
-            <ng-container matColumnDef="transferamount">
+            <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Transfer Amount </th>
-                <td mat-cell *matCellDef="let element"> {{element.transferamount}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
             <!-- Weight Column -->
-            <ng-container matColumnDef="transfercurrency">
+            <ng-container matColumnDef="username">
                 <th mat-header-cell *matHeaderCellDef> Transfer Currency </th>
-                <td mat-cell *matCellDef="let element"> {{element.transfercurrency}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.username}} </td>
             </ng-container>
             <!-- Symbol Column -->
-            <ng-container matColumnDef="reference">
+            <ng-container matColumnDef="email">
                 <th mat-header-cell *matHeaderCellDef> Reference </th>
-                <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

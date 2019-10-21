@@ -9,6 +9,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-right: 8px;
 }
 a:hover{text-decoration: none}
-.grayBtn{ background: #1d1d1b; color: #fff}
-.grayBtn:hover{ background: #3f3f3f; color: #fff}
+.grayBtn{ background: #1d1d1b; color: #fff !important}
+.grayBtn:hover{ background: #3f3f3f; color: #fff !important}
 /* .mat-raised-button.mat-primary:hover{ background: #830223} */
